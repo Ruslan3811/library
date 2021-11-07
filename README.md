@@ -18,7 +18,7 @@ Using decorator @permission_required and mixin - PermissionRequiredMixin, I limi
 
 7) In settings.py configured to send messages to the user's mail.
 
-8) Instruction of using the project:
+# Instruction of using the project:
   1) create .env in ./library/
   2) add into .env variables and values - DJANGO_SECRET_KEY, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
   3) activate the enviromental
