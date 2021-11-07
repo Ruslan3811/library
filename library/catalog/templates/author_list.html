@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>All authors</h1>
+<ul>
+    {% for author in author_list %}
+    <li><a href="{% url 'author-detail' author.pk %}">{{ author.last_name }}:</a>
+        {% for book in author.book_set.all %} {{ book.title }} {% if not forloop.last %}, {% endif %} {% endfor %}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

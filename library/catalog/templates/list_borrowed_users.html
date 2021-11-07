@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% if user.is_staff %}
+{% if bookinstance_list %}
+<h1> Borrow List: </h1>
+{% for bookinst in bookinstance_list %}
+{% if bookinst.borrower %}
+<li><a href="{% url 'book-detail' bookinst.book.pk %}">{{ bookinst.book }} </a>
+    - It should be returned: {{ bookinst.due_back }} <strong>by {{ bookinst.borrower }} </strong>
+    {% if perms.catalog.can_mark_returned %}
+    - <a href="{% url 'renew-book-librarian' bookinst.id %}">Renew</a>
+    {% endif %}
+</li>
+{% endif %}
+{% endfor %} {% else %} All books are free {% endif %} {% else %}
+<h1>You don't have permisions for the page, <a href=" {% url 'login' %}">Login</a>, please, as like Librarier</h1>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+<h1>Little biography of {{ author.first_name }} {{ author.last_name }}</h1>
+<p> <strong>Time of life:</strong> {{ author.date_of_birth }} - {{ author.date_of_death }}</p>
+<p>Books:
+    {% for book in author.book_set.all %}
+    <a href="{% url 'book-detail' book.pk %}">{{ book.title}}</a>{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+</p>
+{% endblock %}
